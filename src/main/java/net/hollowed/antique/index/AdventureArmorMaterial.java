@@ -43,21 +43,21 @@ public record AdventureArmorMaterial(int durability, Map<ArmorType, Integer> def
         int i = this.defense.getOrDefault(equipmentType, 0);
         ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
         EquipmentSlotGroup attributeModifierSlot = EquipmentSlotGroup.bySlot(equipmentType.getSlot());
-        Identifier identifier = Identifier.withDefaultNamespace("armor." + equipmentType.getName());
+        Identifier identifier = Identifier.minecraft("armor." + equipmentType.getName());
         builder.add(Attributes.ARMOR, new AttributeModifier(identifier, i, Operation.ADD_VALUE), attributeModifierSlot);
         builder.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(identifier, this.toughness, Operation.ADD_VALUE), attributeModifierSlot);
         if (this.knockbackResistance > 0.0F) {
             builder.add(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(identifier, this.knockbackResistance, Operation.ADD_VALUE), attributeModifierSlot);
         }
         if (this.burningReduction > 0.0F && attributeModifierSlot.test(EquipmentSlot.CHEST)) {
-            builder.add(Attributes.BURNING_TIME, new AttributeModifier(Identifier.withDefaultNamespace("burn_time"), -this.burningReduction, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), attributeModifierSlot);
+            builder.add(Attributes.BURNING_TIME, new AttributeModifier(Identifier.minecraft("burn_time"), -this.burningReduction, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), attributeModifierSlot);
         }
         if (attributeModifierSlot.test(EquipmentSlot.FEET)) {
             if (this.stepHeight > 0.0F) {
-                builder.add(Attributes.STEP_HEIGHT, new AttributeModifier(Identifier.withDefaultNamespace("step_height"), this.stepHeight, AttributeModifier.Operation.ADD_VALUE), attributeModifierSlot);
+                builder.add(Attributes.STEP_HEIGHT, new AttributeModifier(Identifier.minecraft("step_height"), this.stepHeight, AttributeModifier.Operation.ADD_VALUE), attributeModifierSlot);
             }
             if (this.movementSpeed > 0.0F) {
-                builder.add(Attributes.MOVEMENT_SPEED, new AttributeModifier(Identifier.withDefaultNamespace("movement_speed"), this.movementSpeed, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), attributeModifierSlot);
+                builder.add(Attributes.MOVEMENT_SPEED, new AttributeModifier(Identifier.minecraft("movement_speed"), this.movementSpeed, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), attributeModifierSlot);
             }
         }
 

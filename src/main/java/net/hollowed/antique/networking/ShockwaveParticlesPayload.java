@@ -8,7 +8,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 public record ShockwaveParticlesPayload(float x, float y, float z, Vec3 pushVector) implements CustomPacketPayload {
-    public static final Type<@NotNull ShockwaveParticlesPayload> ID = new Type<>(Antiquities.id("shockwave_particles"));
+    public static final Type<ShockwaveParticlesPayload> ID = new Type<>(Antiquities.id("shockwave_particles"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, ShockwaveParticlesPayload> CODEC = StreamCodec.ofMember(ShockwaveParticlesPayload::write, ShockwaveParticlesPayload::new);
 

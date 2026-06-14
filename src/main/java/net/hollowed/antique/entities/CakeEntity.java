@@ -87,7 +87,7 @@ public class CakeEntity extends AbstractArrow {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
+    protected void defineSynchedData(@NotNull SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(FROZEN, false);
         builder.define(PITCH, this.getXRot());

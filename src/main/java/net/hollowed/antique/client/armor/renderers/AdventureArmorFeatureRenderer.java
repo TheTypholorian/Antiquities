@@ -13,8 +13,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.entity.state.SkeletonRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Util;
@@ -22,6 +22,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.PlayerModelType;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.function.Function;
 
@@ -33,7 +34,7 @@ public class AdventureArmorFeatureRenderer implements ArmorRenderer {
 
     public static final Function<Boolean, RenderType> RENDER_LAYER = Util.memoize(slim -> RenderTypes.armorCutoutNoCull(slim ? TEXTURE : THICK_TEXTURE));
 
-    private final AdventureArmor<@NotNull HumanoidRenderState> model;
+    private final AdventureArmor<HumanoidRenderState> model;
 
     public AdventureArmorFeatureRenderer(EntityRendererProvider.Context context) {
         this.model = new AdventureArmor<>(context.getModelSet().bakeLayer(AntiqueEntityLayers.ADVENTURE_ARMOR));
@@ -41,7 +42,7 @@ public class AdventureArmorFeatureRenderer implements ArmorRenderer {
 
     @SuppressWarnings("all")
     @Override
-    public void render(@NotNull PoseStack matrices, @NotNull SubmitNodeCollector queue, ItemStack stack, @NotNull HumanoidRenderState state, @NotNull EquipmentSlot slot, int light, @NotNull HumanoidModel<@NotNull HumanoidRenderState> contextModel) {
+    public void render(@NotNull PoseStack matrices, @NotNull SubmitNodeCollector queue, ItemStack stack, @NotNull HumanoidRenderState state, @NotNull EquipmentSlot slot, int light, @NotNull HumanoidModel<HumanoidRenderState> contextModel) {
         boolean slim = state instanceof AvatarRenderState playerState && playerState.skin.model() == PlayerModelType.SLIM || state instanceof SkeletonRenderState;
 
         ArmorRenderer.submitTransformCopyingModel(
@@ -79,7 +80,7 @@ public class AdventureArmorFeatureRenderer implements ArmorRenderer {
 
     public static class Factory implements ArmorRenderer.Factory {
         @Override
-        public @NotNull ArmorRenderer createArmorRenderer(EntityRendererProvider.@NotNull Context context) {
+        public @NotNull ArmorRenderer createArmorRenderer(EntityRendererProvider.@NonNull Context context) {
             return new AdventureArmorFeatureRenderer(context);
         }
     }

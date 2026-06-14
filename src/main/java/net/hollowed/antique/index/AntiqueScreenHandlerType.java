@@ -11,7 +11,7 @@ import net.minecraft.world.inventory.MenuType;
 import org.jetbrains.annotations.NotNull;
 
 public class AntiqueScreenHandlerType implements FeatureElement {
-	public static final MenuType<@NotNull DyeingScreenHandler> DYE_TABLE = register("dye_table", DyeingScreenHandler::new);
+	public static final MenuType<DyeingScreenHandler> DYE_TABLE = register("dye_table", DyeingScreenHandler::new);
 
 	@SuppressWarnings("all")
 	private static <T extends AbstractContainerMenu> MenuType<T> register(String id, MenuType.MenuSupplier<T> factory) {

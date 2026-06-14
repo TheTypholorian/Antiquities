@@ -38,7 +38,7 @@ public class ClothPatternGlowRecipe implements CraftingRecipe {
 	}
 
 	@Override
-	public @NotNull RecipeSerializer<@NotNull ClothPatternGlowRecipe> getSerializer() {
+	public @NotNull RecipeSerializer<ClothPatternGlowRecipe> getSerializer() {
 		return AntiqueRecipeSerializer.PATTERN_GLOW;
 	}
 
@@ -72,7 +72,7 @@ public class ClothPatternGlowRecipe implements CraftingRecipe {
 		}
 	}
 
-	public @NotNull ItemStack assemble(CraftingInput craftingRecipeInput, HolderLookup.@NotNull Provider wrapperLookup) {
+	public @NotNull ItemStack assemble(CraftingInput craftingRecipeInput, @NotNull HolderLookup.Provider wrapperLookup) {
 		ItemStack clothPattern = null;
 		boolean glow = false;
 
@@ -92,7 +92,7 @@ public class ClothPatternGlowRecipe implements CraftingRecipe {
 		return ItemStack.EMPTY;
 	}
 
-	public static class Serializer implements RecipeSerializer<@NotNull ClothPatternGlowRecipe> {
+	public static class Serializer implements RecipeSerializer<ClothPatternGlowRecipe> {
 		private static final MapCodec<ClothPatternGlowRecipe> CODEC = RecordCodecBuilder.mapCodec(
 				instance -> instance.group(
 								Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),

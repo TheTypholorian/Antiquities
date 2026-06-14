@@ -71,7 +71,7 @@ public class TyphoSparkParticle extends SingleQuadParticle {
 	}
 
 	@Environment(EnvType.CLIENT)
-	public static class Factory implements ParticleProvider<@NotNull Options> {
+	public static class Factory implements ParticleProvider<Options> {
 		private final SpriteSet spriteProvider;
 
 		public Factory(SpriteSet spriteProvider) {

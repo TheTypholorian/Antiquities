@@ -38,7 +38,7 @@ public class MyriadShovelPart extends Entity implements TraceableEntity {
 	private List<Entity> collisionEntities = List.of();
 	private long prevTime;
 
-	public MyriadShovelPart(EntityType<@NotNull MyriadShovelPart> myriadShovelEntityEntityType, Level world) {
+	public MyriadShovelPart(EntityType<MyriadShovelPart> myriadShovelEntityEntityType, Level world) {
 		super(myriadShovelEntityEntityType, world);
 	}
 
@@ -114,7 +114,7 @@ public class MyriadShovelPart extends Entity implements TraceableEntity {
 	}
 
 	@Override
-	protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
+	protected void defineSynchedData(@NotNull SynchedEntityData.Builder builder) {
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
+import org.jspecify.annotations.NonNull;
 
 @Environment(EnvType.CLIENT)
 public class CakeSmearParticle extends SingleQuadParticle {
@@ -59,7 +60,7 @@ public class CakeSmearParticle extends SingleQuadParticle {
 	}
 
 	@Environment(EnvType.CLIENT)
-	public static class Factory implements ParticleProvider<@NotNull SimpleParticleType> {
+	public static class Factory implements ParticleProvider<SimpleParticleType> {
 		private final SpriteSet spriteProvider;
 
 		public Factory(SpriteSet spriteProvider) {
@@ -67,7 +68,7 @@ public class CakeSmearParticle extends SingleQuadParticle {
 		}
 
 		@Override
-		public @Nullable Particle createParticle(SimpleParticleType parameters, @NotNull ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, @NotNull RandomSource random) {
+		public @Nullable Particle createParticle(@NonNull SimpleParticleType parameters, @NotNull ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, @NotNull RandomSource random) {
 			CakeSmearParticle particle = new CakeSmearParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
 			particle.setSprite(this.spriteProvider.first());
 			return particle;

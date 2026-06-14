@@ -4,11 +4,10 @@ import net.hollowed.antique.Antiquities;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public record AddClothItemsPayload() implements CustomPacketPayload {
-    public static final Type<@NotNull AddClothItemsPayload> ID = new Type<>(Antiquities.id("cloth_items_packet"));
+    public static final Type<AddClothItemsPayload> ID = new Type<>(Antiquities.id("cloth_items_packet"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, AddClothItemsPayload> CODEC = StreamCodec.ofMember(AddClothItemsPayload::write, AddClothItemsPayload::new);
 

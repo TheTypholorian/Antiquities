@@ -7,7 +7,6 @@ import net.hollowed.antique.index.AntiqueItems;
 import net.hollowed.antique.items.components.MyriadToolComponent;
 import net.hollowed.antique.mixin.accessors.RendererAccessor;
 import net.hollowed.antique.util.ClothUtil;
-import net.hollowed.antique.util.resources.ClothPatternData;
 import net.hollowed.antique.util.resources.ClothSkinData;
 import net.hollowed.combatamenities.util.items.CAComponents;
 import net.minecraft.client.Camera;

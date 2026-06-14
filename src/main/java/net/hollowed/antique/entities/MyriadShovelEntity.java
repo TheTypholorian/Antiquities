@@ -60,7 +60,7 @@ public class MyriadShovelEntity extends AbstractArrow {
 
 	public boolean canPickup;
 
-	public MyriadShovelEntity(EntityType<@NotNull MyriadShovelEntity> entityType, Level world) {
+	public MyriadShovelEntity(EntityType<MyriadShovelEntity> entityType, Level world) {
 		super(entityType, world);
 		this.setBaseDamage(8);
 		this.setPickupItemStack(Antiquities.getMyriadShovelStack());
@@ -119,7 +119,7 @@ public class MyriadShovelEntity extends AbstractArrow {
 	}
 
 	@Override
-	protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
+	protected void defineSynchedData(@NotNull SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
 		builder.define(LOYALTY, (byte)0);
 		builder.define(ENCHANTED, false);

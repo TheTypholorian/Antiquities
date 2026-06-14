@@ -10,6 +10,6 @@ public interface AntiqueInstruments {
 
 	@SuppressWarnings("all")
 	private static ResourceKey<Instrument> of(String id) {
-		return ResourceKey.create(Registries.INSTRUMENT, Identifier.withDefaultNamespace(id));
+		return ResourceKey.create(Registries.INSTRUMENT, Identifier.minecraft(id));
 	}
 }

@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 
 public interface AntiqueEquipmentAssetKeys {
-    ResourceKey<? extends Registry<EquipmentAsset>> REGISTRY_KEY = ResourceKey.createRegistryKey(Identifier.withDefaultNamespace("equipment_asset"));
+    ResourceKey<? extends Registry<EquipmentAsset>> REGISTRY_KEY = ResourceKey.createRegistryKey(Identifier.minecraft("equipment_asset"));
     ResourceKey<EquipmentAsset> EMPTY = register("empty");
 
     static ResourceKey<EquipmentAsset> register(String name) {

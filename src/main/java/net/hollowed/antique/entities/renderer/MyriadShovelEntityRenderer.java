@@ -6,8 +6,6 @@ import net.hollowed.antique.Antiquities;
 import net.hollowed.antique.client.renderer.cloth.ClothManager;
 import net.hollowed.antique.entities.MyriadShovelEntity;
 import net.hollowed.antique.index.AntiqueDataComponentTypes;
-import net.hollowed.antique.index.AntiqueItems;
-import net.hollowed.antique.items.components.MyriadToolComponent;
 import net.hollowed.antique.util.resources.ClothPatternData;
 import net.hollowed.antique.util.resources.ClothSkinData;
 import net.minecraft.client.Minecraft;
@@ -29,7 +27,7 @@ import java.awt.*;
 import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
-public class MyriadShovelEntityRenderer extends EntityRenderer<@NotNull MyriadShovelEntity, @NotNull MyriadShovelRenderState> {
+public class MyriadShovelEntityRenderer extends EntityRenderer<MyriadShovelEntity, MyriadShovelRenderState> {
 
 	public MyriadShovelEntityRenderer(EntityRendererProvider.Context context) {
 		super(context);

@@ -45,12 +45,13 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import org.jspecify.annotations.NonNull;
+
 import java.util.List;
 
-public class PedestalRenderer implements BlockEntityRenderer<@NotNull PedestalBlockEntity, @NotNull PedestalRenderState> {
+public class PedestalRenderer implements BlockEntityRenderer<PedestalBlockEntity, PedestalRenderState> {
 
     private static final Vec3 ITEM_POS = new Vec3(0.5, 1.5, 0.5);
 
@@ -178,12 +179,12 @@ public class PedestalRenderer implements BlockEntityRenderer<@NotNull PedestalBl
     }
 
     @Override
-    public PedestalRenderState createRenderState() {
+    public @NonNull PedestalRenderState createRenderState() {
         return new PedestalRenderState();
     }
 
     @Override
-    public void extractRenderState(PedestalBlockEntity blockEntity, PedestalRenderState state, float f, @NotNull Vec3 vec3, ModelFeatureRenderer.@Nullable CrumblingOverlay crumblingOverlay) {
+    public void extractRenderState(@NonNull PedestalBlockEntity blockEntity, @NonNull PedestalRenderState state, float f, @NotNull Vec3 vec3, ModelFeatureRenderer.CrumblingOverlay crumblingOverlay) {
         BlockEntityRenderer.super.extractRenderState(blockEntity, state, f, vec3, crumblingOverlay);
         state.storedStack = blockEntity.getItem(0);
         state.world = blockEntity.getLevel();

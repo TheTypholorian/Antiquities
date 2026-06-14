@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AbstractSkeletonRenderer.class)
 public abstract class SkeletonFeatureAdder<T extends AbstractSkeleton, S extends SkeletonRenderState>
-        extends HumanoidMobRenderer<T, S, @NotNull SkeletonModel<S>> {
+        extends HumanoidMobRenderer<T, S, SkeletonModel<S>> {
 
     public SkeletonFeatureAdder(EntityRendererProvider.Context context, SkeletonModel<S> model, float shadowRadius) {
         super(context, model, shadowRadius);

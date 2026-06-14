@@ -7,14 +7,11 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-import net.hollowed.antique.Antiquities;
 import net.hollowed.antique.index.AntiqueDataComponentTypes;
 import net.hollowed.antique.index.AntiqueItems;
 import net.hollowed.antique.index.AntiqueRecipeSerializer;
-import net.hollowed.antique.index.AntiqueRegistries;
 import net.hollowed.antique.items.components.MyriadToolComponent;
 import net.hollowed.antique.util.resources.ClothPatternData;
-import net.hollowed.antique.util.resources.ClothSkinData;
 import net.hollowed.combatamenities.util.items.CAComponents;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -48,7 +45,7 @@ public class ClothPatternOnToolRecipe implements CraftingRecipe {
 	}
 
 	@Override
-	public @NotNull RecipeSerializer<@NotNull ClothPatternOnToolRecipe> getSerializer() {
+	public @NotNull RecipeSerializer<ClothPatternOnToolRecipe> getSerializer() {
 		return AntiqueRecipeSerializer.CLOTH_PATTERN;
 	}
 
@@ -115,7 +112,7 @@ public class ClothPatternOnToolRecipe implements CraftingRecipe {
 		}
 	}
 
-	public @NotNull ItemStack assemble(CraftingInput craftingRecipeInput, HolderLookup.@NotNull Provider wrapperLookup) {
+	public @NotNull ItemStack assemble(CraftingInput craftingRecipeInput, @NotNull HolderLookup.Provider wrapperLookup) {
 		ItemStack myriadTool = null;
 		ItemStack clothPattern = null;
 
@@ -142,7 +139,7 @@ public class ClothPatternOnToolRecipe implements CraftingRecipe {
 		return ItemStack.EMPTY;
 	}
 
-	public static class Serializer implements RecipeSerializer<@NotNull ClothPatternOnToolRecipe> {
+	public static class Serializer implements RecipeSerializer<ClothPatternOnToolRecipe> {
 		private static final MapCodec<ClothPatternOnToolRecipe> CODEC = RecordCodecBuilder.mapCodec(
 				instance -> instance.group(
 								Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),

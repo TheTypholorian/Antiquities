@@ -79,7 +79,7 @@ public class IllusionerEntity extends SpellcasterIllager implements RangedAttack
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
+    protected void defineSynchedData(@NotNull SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(SPELL_COLOR, new Vector3f(0, 0, 0));
     }
@@ -257,7 +257,7 @@ public class IllusionerEntity extends SpellcasterIllager implements RangedAttack
         this.playSound(SoundEvents.FIREWORK_ROCKET_LAUNCH, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
     }
 
-    public AbstractIllager.@NotNull IllagerArmPose getArmPose() {
+    public @NotNull AbstractIllager.IllagerArmPose getArmPose() {
         if (this.isCastingSpell()) {
             return IllagerArmPose.SPELLCASTING;
         } else {
@@ -352,7 +352,7 @@ public class IllusionerEntity extends SpellcasterIllager implements RangedAttack
             return SoundEvents.ILLUSIONER_PREPARE_MIRROR;
         }
 
-        protected SpellcasterIllager.@NotNull IllagerSpell getSpell() {
+        protected @NotNull SpellcasterIllager.IllagerSpell getSpell() {
             return IllagerSpell.BLINDNESS;
         }
     }
@@ -419,7 +419,7 @@ public class IllusionerEntity extends SpellcasterIllager implements RangedAttack
             return SoundEvents.ILLUSIONER_PREPARE_BLINDNESS;
         }
 
-        protected SpellcasterIllager.@NotNull IllagerSpell getSpell() {
+        protected @NotNull SpellcasterIllager.IllagerSpell getSpell() {
             return IllagerSpell.BLINDNESS;
         }
     }

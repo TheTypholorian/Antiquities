@@ -43,11 +43,11 @@ public class SatchelSelectedItemModel implements ItemModel {
             return CODEC;
         }
 
-        public @NotNull ItemModel bake(ItemModel.@NotNull BakingContext context) {
+        public @NotNull ItemModel bake(@NotNull ItemModel.BakingContext context) {
             return SatchelSelectedItemModel.INSTANCE;
         }
 
-        public void resolveDependencies(ResolvableModel.@NotNull Resolver resolver) {
+        public void resolveDependencies(@NotNull ResolvableModel.Resolver resolver) {
         }
     }
 }

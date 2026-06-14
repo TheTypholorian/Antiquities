@@ -5,12 +5,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public record PedestalPacketPayload(BlockPos blockPos, ItemStack stack) implements CustomPacketPayload {
-    public static final CustomPacketPayload.Type<@NotNull PedestalPacketPayload> ID = new CustomPacketPayload.Type<>(Antiquities.id("pedestal_packet"));
+    public static final CustomPacketPayload.Type<PedestalPacketPayload> ID = new CustomPacketPayload.Type<>(Antiquities.id("pedestal_packet"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, PedestalPacketPayload> CODEC = StreamCodec.ofMember(PedestalPacketPayload::write, PedestalPacketPayload::new);
 

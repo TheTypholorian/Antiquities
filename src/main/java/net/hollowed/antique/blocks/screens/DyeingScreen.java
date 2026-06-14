@@ -29,7 +29,7 @@ import org.lwjgl.glfw.GLFW;
 import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
-public class DyeingScreen extends AbstractContainerScreen<@NotNull DyeingScreenHandler> implements ContainerListener {
+public class DyeingScreen extends AbstractContainerScreen<DyeingScreenHandler> implements ContainerListener {
 	private static final Identifier TEXTURE = Antiquities.id("textures/gui/container/dye_table.png");
 	private EditBox colorField;
 

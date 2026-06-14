@@ -218,7 +218,7 @@ public class IllusionerCloneEntity extends SpellcasterIllager implements RangedA
         }
     }
 
-    public AbstractIllager.@NotNull IllagerArmPose getArmPose() {
+    public @NotNull AbstractIllager.IllagerArmPose getArmPose() {
         if (this.isCastingSpell()) {
             return IllagerArmPose.SPELLCASTING;
         } else {

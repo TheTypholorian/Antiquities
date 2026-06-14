@@ -45,7 +45,7 @@ public class Antiquities implements ModInitializer {
 	public static final String MOD_ID = "antique";
 
 	public static Identifier id(String string) {
-		return Identifier.fromNamespaceAndPath(MOD_ID, string);
+		return Identifier.of(MOD_ID, string);
 	}
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -229,19 +229,19 @@ public class Antiquities implements ModInitializer {
 		return 0;
 	}
 
-	public static final ResourceKey<CreativeModeTab> ANTIQUITIES_ITEMS_GROUP_KEY = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(MOD_ID, "antiquities_items_group"));
+	public static final ResourceKey<CreativeModeTab> ANTIQUITIES_ITEMS_GROUP_KEY = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), id("antiquities_items_group"));
 	public static final CreativeModeTab ANTIQUITIES_ITEMS_GROUP = FabricItemGroup.builder()
 			.icon(() -> new ItemStack(AntiqueItems.FUR_BOOTS))
 			.title(Component.translatable("itemGroup.antique.antiquities_items").withColor(0xFFAA2F54))
 			.build();
 
-	public static final ResourceKey<CreativeModeTab> ANTIQUITIES_BLOCKS_GROUP_KEY = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(MOD_ID, "antiquities_blocks_group"));
+	public static final ResourceKey<CreativeModeTab> ANTIQUITIES_BLOCKS_GROUP_KEY = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), id("antiquities_blocks_group"));
 	public static final CreativeModeTab ANTIQUITIES_BLOCKS_GROUP = FabricItemGroup.builder()
 			.icon(() -> new ItemStack(AntiqueBlocks.HOLLOW_CORE))
 			.title(Component.translatable("itemGroup.antique.antiquities_blocks").withColor(0xFFAA2F54))
 			.build();
 
-	public static final ResourceKey<CreativeModeTab> ANTIQUITIES_CLOTHS_GROUP_KEY = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(MOD_ID, "antiquities_cloths_group"));
+	public static final ResourceKey<CreativeModeTab> ANTIQUITIES_CLOTHS_GROUP_KEY = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), id("antiquities_cloths_group"));
 	public static final CreativeModeTab ANTIQUITIES_CLOTHS_GROUP = FabricItemGroup.builder()
 			.icon(() -> new ItemStack(AntiqueItems.CLOTH))
 			.title(Component.translatable("itemGroup.antique.antiquities_cloths").withColor(0xFFAA2F54))

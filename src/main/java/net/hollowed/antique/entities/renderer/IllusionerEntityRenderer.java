@@ -31,18 +31,19 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 @Environment(EnvType.CLIENT)
-public class IllusionerEntityRenderer extends IllagerRenderer<@org.jetbrains.annotations.NotNull IllusionerEntity, @org.jetbrains.annotations.NotNull IllusionerEntityRenderState> {
+public class IllusionerEntityRenderer extends IllagerRenderer<IllusionerEntity, IllusionerEntityRenderState> {
     private static final Identifier TEXTURE = Antiquities.id("textures/entity/illager/illusioner.png");
     private static final Identifier CLONE_TEXTURE = Antiquities.id("textures/entity/illager/illusioner_clone.png");
 
     public IllusionerEntityRenderer(EntityRendererProvider.Context context) {
         super(context, new IllagerModel<>(context.bakeLayer(ModelLayers.ILLUSIONER)), 0.5F);
-        this.addLayer(new ItemInHandLayer<@NotNull IllusionerEntityRenderState, @NotNull IllagerModel<@NotNull IllusionerEntityRenderState>>(this) {
-            public void submit(@NotNull PoseStack matrixStack, @NotNull SubmitNodeCollector orderedRenderCommandQueue, int i, IllusionerEntityRenderState illusionerEntityRenderState, float f, float g) {
-                if (illusionerEntityRenderState.spellcasting || illusionerEntityRenderState.isAggressive) {
-                    super.submit(matrixStack, orderedRenderCommandQueue, i, illusionerEntityRenderState, f, g);
+        this.addLayer(new ItemInHandLayer<>(this) {
+            public void submit(@NotNull PoseStack matrixStack, @NotNull SubmitNodeCollector queue, int i, @NonNull IllusionerEntityRenderState state, float f, float g) {
+                if (state.spellcasting || state.isAggressive) {
+                    super.submit(matrixStack, queue, i, state, f, g);
                 }
             }
         });
@@ -56,11 +57,11 @@ public class IllusionerEntityRenderer extends IllagerRenderer<@org.jetbrains.ann
         return TEXTURE;
     }
 
-    public IllusionerEntityRenderState createRenderState() {
+    public @NonNull IllusionerEntityRenderState createRenderState() {
         return new IllusionerEntityRenderState();
     }
 
-    public void extractRenderState(IllusionerEntity illusionerEntity, IllusionerEntityRenderState illusionerEntityRenderState, float f) {
+    public void extractRenderState(@NonNull IllusionerEntity illusionerEntity, @NonNull IllusionerEntityRenderState illusionerEntityRenderState, float f) {
         super.extractRenderState(illusionerEntity, illusionerEntityRenderState, f);
         Vec3[] vec3ds = illusionerEntity.getMirrorCopyOffsets(f);
         illusionerEntityRenderState.mirrorCopyOffsets = Arrays.copyOf(vec3ds, vec3ds.length);
@@ -94,7 +95,7 @@ public class IllusionerEntityRenderer extends IllagerRenderer<@org.jetbrains.ann
         }
     }
 
-    protected boolean isBodyVisible(IllusionerEntityRenderState illusionerEntityRenderState) {
+    protected boolean isBodyVisible(@NonNull IllusionerEntityRenderState illusionerEntityRenderState) {
         return true;
     }
 

@@ -66,7 +66,7 @@ public class PedestalBlock extends BaseEntityBlock implements EntityBlock, Simpl
     public static final BooleanProperty HELD_ITEM = BooleanProperty.create("held_item");
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public static final EnumProperty<@NotNull PillarPart> PART = EnumProperty.create("part", PillarPart.class);
+    public static final EnumProperty<PillarPart> PART = EnumProperty.create("part", PillarPart.class);
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, @NotNull BlockState state, @NotNull BlockEntityType<T> type) {
@@ -126,7 +126,7 @@ public class PedestalBlock extends BaseEntityBlock implements EntityBlock, Simpl
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, @NotNull BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HELD_ITEM, WATERLOGGED, PART);
     }
 

@@ -4,11 +4,10 @@ import net.hollowed.antique.Antiquities;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public record DyePacketPayload(String color) implements CustomPacketPayload {
-    public static final Type<@NotNull DyePacketPayload> ID = new Type<>(Antiquities.id("dye_packet"));
+    public static final Type<DyePacketPayload> ID = new Type<>(Antiquities.id("dye_packet"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, DyePacketPayload> CODEC = StreamCodec.ofMember(DyePacketPayload::write, DyePacketPayload::new);
 

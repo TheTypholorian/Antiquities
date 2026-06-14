@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public record SatchelPacketPayload(boolean bool) implements CustomPacketPayload {
 
-    public static final Type<@NotNull SatchelPacketPayload> ID = new Type<>(Antiquities.id("satchel_packet"));
+    public static final Type<SatchelPacketPayload> ID = new Type<>(Antiquities.id("satchel_packet"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, SatchelPacketPayload> CODEC = StreamCodec.ofMember(SatchelPacketPayload::write, SatchelPacketPayload::new);
 

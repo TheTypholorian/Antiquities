@@ -14,7 +14,7 @@ public record MyriadStaffTransformData(
         List<Float> rotation,
         List<Float> translation
 ) {
-    public static final Identifier DEFAULT_MODEL = Identifier.withDefaultNamespace("default");
+    public static final Identifier DEFAULT_MODEL = Identifier.minecraft("default");
     public static final Codec<MyriadStaffTransformData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             TagOrSingle.codec(Registries.ITEM).fieldOf("item").orElseGet(() -> new TagOrSingle.Single<>(DEFAULT_MODEL)).forGetter(MyriadStaffTransformData::model),
             Codec.FLOAT.listOf().fieldOf("scale").orElseGet(() -> List.of(1.0f, 1.0f, 1.0f)).forGetter(MyriadStaffTransformData::scale),

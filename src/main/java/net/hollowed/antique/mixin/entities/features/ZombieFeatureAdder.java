@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AbstractZombieRenderer.class)
 public abstract class ZombieFeatureAdder<T extends Zombie, S extends ZombieRenderState, M extends ZombieModel<S>>
-        extends HumanoidMobRenderer<T, S, @NotNull M> {
+        extends HumanoidMobRenderer<T, S, M> {
 
     public ZombieFeatureAdder(EntityRendererProvider.Context context, M model, float shadowRadius) {
         super(context, model, shadowRadius);

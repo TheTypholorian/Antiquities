@@ -17,8 +17,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
@@ -37,7 +37,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
 @Mixin(AvatarRenderer.class)
-public abstract class PlayerFeatureAdder extends LivingEntityRenderer<@NotNull AbstractClientPlayer, @NotNull AvatarRenderState, @NotNull PlayerModel> {
+public abstract class PlayerFeatureAdder extends LivingEntityRenderer<AbstractClientPlayer, AvatarRenderState, PlayerModel> {
 
     @Unique
     private static final Identifier TEXTURE = Antiquities.id("textures/entity/adventure_armor.png");
@@ -48,7 +48,7 @@ public abstract class PlayerFeatureAdder extends LivingEntityRenderer<@NotNull A
     @Unique
     private static final RenderType THICK_RENDER_LAYER = RenderTypes.armorCutoutNoCull(THICK_TEXTURE);
     @Unique
-    private AdventureArmor<@NotNull AvatarRenderState> armorModel;
+    private AdventureArmor<AvatarRenderState> armorModel;
     @Unique
     private boolean slim = false;
 

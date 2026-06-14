@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
-import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ModListEntry.class)
-public abstract class ModMenuMixin extends ObjectSelectionList.Entry<@NotNull ModListEntry> {
+public abstract class ModMenuMixin extends ObjectSelectionList.Entry<ModListEntry> {
 
     @Shadow @Final public Mod mod;
 

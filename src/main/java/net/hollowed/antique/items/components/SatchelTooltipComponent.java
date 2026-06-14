@@ -21,12 +21,12 @@ import org.jetbrains.annotations.Nullable;
 
 @Environment(EnvType.CLIENT)
 public class SatchelTooltipComponent implements ClientTooltipComponent {
-	private static final Identifier BUNDLE_PROGRESS_BAR_BORDER_TEXTURE = Identifier.withDefaultNamespace("container/bundle/bundle_progressbar_border");
-	private static final Identifier BUNDLE_PROGRESS_BAR_FILL_TEXTURE = Identifier.withDefaultNamespace("container/bundle/bundle_progressbar_fill");
-	private static final Identifier BUNDLE_PROGRESS_BAR_FULL_TEXTURE = Identifier.withDefaultNamespace("container/bundle/bundle_progressbar_full");
-	private static final Identifier BUNDLE_SLOT_HIGHLIGHT_BACK_TEXTURE = Identifier.withDefaultNamespace("container/bundle/slot_highlight_back");
-	private static final Identifier BUNDLE_SLOT_HIGHLIGHT_FRONT_TEXTURE = Identifier.withDefaultNamespace("container/bundle/slot_highlight_front");
-	private static final Identifier BUNDLE_SLOT_BACKGROUND_TEXTURE = Identifier.withDefaultNamespace("container/bundle/slot_background");
+	private static final Identifier BUNDLE_PROGRESS_BAR_BORDER_TEXTURE = Identifier.minecraft("container/bundle/bundle_progressbar_border");
+	private static final Identifier BUNDLE_PROGRESS_BAR_FILL_TEXTURE = Identifier.minecraft("container/bundle/bundle_progressbar_fill");
+	private static final Identifier BUNDLE_PROGRESS_BAR_FULL_TEXTURE = Identifier.minecraft("container/bundle/bundle_progressbar_full");
+	private static final Identifier BUNDLE_SLOT_HIGHLIGHT_BACK_TEXTURE = Identifier.minecraft("container/bundle/slot_highlight_back");
+	private static final Identifier BUNDLE_SLOT_HIGHLIGHT_FRONT_TEXTURE = Identifier.minecraft("container/bundle/slot_highlight_front");
+	private static final Identifier BUNDLE_SLOT_BACKGROUND_TEXTURE = Identifier.minecraft("container/bundle/slot_background");
 	private static final Component BUNDLE_FULL = Component.translatable("item.minecraft.bundle.full");
 	private static final Component BUNDLE_EMPTY = Component.translatable("item.minecraft.bundle.empty");
 	private static final Component BUNDLE_EMPTY_DESCRIPTION = Component.translatable("item.antique.satchel.empty.description");

@@ -20,13 +20,13 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.NotNull;
 
-public class MyriadOreFeature extends Feature<@NotNull MyriadOreFeatureConfig> {
+public class MyriadOreFeature extends Feature<MyriadOreFeatureConfig> {
 	public MyriadOreFeature(Codec<MyriadOreFeatureConfig> codec) {
 		super(codec);
 	}
 
 	@Override
-	public boolean place(FeaturePlaceContext<@NotNull MyriadOreFeatureConfig> context) {
+	public boolean place(FeaturePlaceContext<MyriadOreFeatureConfig> context) {
 		RandomSource random = context.random();
 		BlockPos blockPos = context.origin();
 		WorldGenLevel structureWorldAccess = context.level();

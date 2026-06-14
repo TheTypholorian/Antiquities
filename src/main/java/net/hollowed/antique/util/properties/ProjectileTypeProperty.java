@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 @Environment(EnvType.CLIENT)
 public record ProjectileTypeProperty() implements SelectItemModelProperty<Identifier> {
-	public static final SelectItemModelProperty.Type<@NotNull ProjectileTypeProperty, Identifier> TYPE = SelectItemModelProperty.Type.create(
+	public static final SelectItemModelProperty.Type<ProjectileTypeProperty, Identifier> TYPE = SelectItemModelProperty.Type.create(
 			MapCodec.unit(new ProjectileTypeProperty()), Identifier.CODEC
 	);
 
@@ -34,7 +34,7 @@ public record ProjectileTypeProperty() implements SelectItemModelProperty<Identi
 	}
 
 	@Override
-	public @NotNull Type<@NotNull ProjectileTypeProperty, Identifier> type() {
+	public @NotNull Type<ProjectileTypeProperty, Identifier> type() {
 		return TYPE;
 	}
 

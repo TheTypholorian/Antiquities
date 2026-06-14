@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FishingHookRenderer.class)
-public abstract class FishingHookRendererMixin extends EntityRenderer<@NotNull FishingHook, @NotNull FishingHookRenderState> {
+public abstract class FishingHookRendererMixin extends EntityRenderer<FishingHook, FishingHookRenderState> {
 
     protected FishingHookRendererMixin(EntityRendererProvider.Context context) {
         super(context);

@@ -57,7 +57,7 @@ public class PedestalBlockEntity extends BlockEntity implements WorldlyContainer
     }
 
     @Override
-    public @NotNull CompoundTag getUpdateTag(HolderLookup.@NotNull Provider registries) {
+    public @NotNull CompoundTag getUpdateTag(@NotNull HolderLookup.Provider registries) {
         ProblemReporter.ScopedCollector logging = new ProblemReporter.ScopedCollector(this.problemPath(), Antiquities.LOGGER);
 
         CompoundTag var4;
@@ -125,7 +125,7 @@ public class PedestalBlockEntity extends BlockEntity implements WorldlyContainer
     }
 
     @Override
-    public int @NotNull [] getSlotsForFace(@NotNull Direction side) {
+    public @NotNull int[] getSlotsForFace(@NotNull Direction side) {
         return new int[]{0};
     }
 

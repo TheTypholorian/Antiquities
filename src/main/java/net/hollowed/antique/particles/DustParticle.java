@@ -53,7 +53,7 @@ public class DustParticle extends SingleQuadParticle {
 	}
 
 	@Environment(EnvType.CLIENT)
-	public static class CosySmokeFactory implements ParticleProvider<@NotNull SimpleParticleType> {
+	public static class CosySmokeFactory implements ParticleProvider<SimpleParticleType> {
 		private final SpriteSet spriteProvider;
 
 		public CosySmokeFactory(SpriteSet spriteProvider) {

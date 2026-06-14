@@ -30,9 +30,9 @@ import java.util.List;
 public class SatchelOverlayMixin {
 
     @Unique
-    private static final Identifier HOTBAR_SLOT = Identifier.withDefaultNamespace("textures/gui/sprites/hud/hotbar_offhand_left.png");
+    private static final Identifier HOTBAR_SLOT = Identifier.minecraft("textures/gui/sprites/hud/hotbar_offhand_left.png");
     @Unique
-    private static final Identifier HOTBAR_SELECTORS = Identifier.withDefaultNamespace("textures/gui/sprites/hud/hotbar_selection.png");
+    private static final Identifier HOTBAR_SELECTORS = Identifier.minecraft("textures/gui/sprites/hud/hotbar_selection.png");
 
     @Inject(method = "render", at = @At("HEAD"))
     public void render(GuiGraphics context, DeltaTracker tickCounter, CallbackInfo ci) {

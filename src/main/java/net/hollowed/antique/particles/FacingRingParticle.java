@@ -53,7 +53,7 @@ public class FacingRingParticle extends SimpleAnimatedParticle {
 	}
 
 	@Environment(EnvType.CLIENT)
-	public static class Factory implements ParticleProvider<@NotNull SimpleParticleType> {
+	public static class Factory implements ParticleProvider<SimpleParticleType> {
 		private final SpriteSet spriteProvider;
 
 		public Factory(SpriteSet spriteProvider) {
@@ -61,7 +61,7 @@ public class FacingRingParticle extends SimpleAnimatedParticle {
 		}
 
 		@Override
-		public @Nullable Particle createParticle(SimpleParticleType parameters, @NotNull ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, @NotNull RandomSource random) {
+		public @Nullable Particle createParticle(@NotNull SimpleParticleType parameters, @NotNull ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, @NotNull RandomSource random) {
 			return new FacingRingParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
 		}
 	}

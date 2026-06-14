@@ -13,16 +13,16 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 public class AntiqueLootTableModifiers {
     private static final Identifier TRIAL_VAULT =
-            Identifier.withDefaultNamespace("chests/trial_chambers/reward_unique");
+            Identifier.minecraft("chests/trial_chambers/reward_unique");
 
     // List of village loot tables where bundles may appear
     private static final Identifier[] VILLAGE_CHESTS = new Identifier[] {
-            Identifier.withDefaultNamespace("chests/village/village_desert_house"),
-            Identifier.withDefaultNamespace("chests/village/village_plains_house"),
-            Identifier.withDefaultNamespace("chests/village/village_savanna_house"),
-            Identifier.withDefaultNamespace("chests/village/village_snowy_house"),
-            Identifier.withDefaultNamespace("chests/village/village_taiga_house"),
-            Identifier.withDefaultNamespace("chests/village/village_tannery")
+            Identifier.minecraft("chests/village/village_desert_house"),
+            Identifier.minecraft("chests/village/village_plains_house"),
+            Identifier.minecraft("chests/village/village_savanna_house"),
+            Identifier.minecraft("chests/village/village_snowy_house"),
+            Identifier.minecraft("chests/village/village_taiga_house"),
+            Identifier.minecraft("chests/village/village_tannery")
     };
 
     public static void initialize() {

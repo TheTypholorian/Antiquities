@@ -6,7 +6,6 @@ import net.hollowed.antique.index.AntiqueItems;
 import net.hollowed.antique.index.AntiqueScreenHandlerType;
 import net.hollowed.antique.items.components.MyriadToolComponent;
 import net.hollowed.antique.util.ClothUtil;
-import net.hollowed.antique.util.resources.ClothSkinData;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Container;

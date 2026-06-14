@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public class AntiqueFeatures {
 
     @SuppressWarnings("unused")
-    public static final Feature<@NotNull MyriadOreFeatureConfig> MYRIAD_ORE = register("antique:myriad_ore", new MyriadOreFeature(MyriadOreFeatureConfig.CODEC));
+    public static final Feature<MyriadOreFeatureConfig> MYRIAD_ORE = register("antique:myriad_ore", new MyriadOreFeature(MyriadOreFeatureConfig.CODEC));
 
     @SuppressWarnings("SameParameterValue")
     private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String name, F feature) {

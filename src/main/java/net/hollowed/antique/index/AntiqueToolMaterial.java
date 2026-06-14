@@ -71,7 +71,7 @@ public record AntiqueToolMaterial(
 				)
 				.add(
 						Attributes.ENTITY_INTERACTION_RANGE,
-						new AttributeModifier(Identifier.withDefaultNamespace("base_entity_reach"), reach, AttributeModifier.Operation.ADD_VALUE),
+						new AttributeModifier(Identifier.minecraft("base_entity_reach"), reach, AttributeModifier.Operation.ADD_VALUE),
 						EquipmentSlotGroup.MAINHAND
 				)
 				.build();

@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.jetbrains.annotations.NotNull;
 
 public interface AntiqueBlockEntities {
-    BlockEntityType<@NotNull PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY =
+    BlockEntityType<PedestalBlockEntity> PEDESTAL_BLOCK_ENTITY =
             Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Antiquities.id("pedestal"),
                     FabricBlockEntityTypeBuilder.create(PedestalBlockEntity::new,
                             AntiqueBlocks.PEDESTAL).build());
