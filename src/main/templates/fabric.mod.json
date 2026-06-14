@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "${description}",
+  "authors": [
+    "${authors}"
+  ],
+  "license": "${license}",
+  "contact": {
+    "issues": "https://github.com/HollowedWanderer/Antiquities/issues/",
+    "sources": "https://github.com/HollowedWanderer/Antiquities/"
+  },
+  "icon": "icon.png",
+  "entrypoints": {
+    "modmenu": [
+      "net.hollowed.antique.ModMenuCompat"
+    ]
+  },
+  "depends": {
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version_range}",
+    "big_shot_lib": ">=${big_shot_version}",
+    "yet_another_config_lib_v3": ">=${yacl_version}"
+  }
+}

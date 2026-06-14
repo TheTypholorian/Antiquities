@@ -1,0 +1,204 @@
+import io.github.klahap.dotenv.DotEnvBuilder
+
+plugins {
+    id("dev.kikugie.fletching-table.neoforge") version "0.1.0-alpha.22"
+
+    id("me.modmuss50.mod-publish-plugin") version "2.0.0-beta.1"
+    id("io.github.klahap.dotenv") version "1.1.3"
+
+    id("com.google.devtools.ksp") version "2.3.9"
+
+    id("dev.isxander.modstitch.base") version "0.8.5"
+
+    id("net.typho.big_shot_lib.plugin") version "1.0.0"
+}
+
+bigShotLib {
+    version(sc.current.version)
+    loader("neoforge")
+
+    transformInfo {
+        setupDefaults()
+
+        clientOnlyPackages.add("net/hollowed/antique/client")
+        clientOnlyPackages.add("net/hollowed/antique/mixin/client")
+    }
+}
+
+fletchingTable {
+    mixins.create("main") {
+        mixin("default", "${project.property("id")}.mixins.json")
+    }
+}
+
+modstitch {
+    modLoaderVersion = property("deps.loader_version") as String
+    minecraftVersion = property("deps.minecraft") as String
+
+    parchment {
+        findProperty("deps.parchment")?.let {
+            val (mc, mappings) = (it as String).split(':')
+            minecraftVersion = mc
+            mappingsVersion = mappings
+        }
+    }
+
+    metadata {
+        modId = project.property("id") as String
+        modName = project.property("displayName") as String
+        modVersion = project.property("version") as String
+        modGroup = project.property("group") as String
+
+        findProperty("authors")?.let { modAuthor = it as String }
+        findProperty("description")?.let { modDescription = it as String }
+        findProperty("license")?.let { modLicense = it as String }
+        findProperty("credits")?.let { modCredits = it as String }
+
+        replacementProperties.put("id", project.property("id") as String)
+        replacementProperties.put("version", project.version as String)
+        replacementProperties.put("name", project.property("displayName") as String)
+        replacementProperties.put("description", project.property("description") as String)
+        replacementProperties.put("authors", project.property("authors") as String)
+        replacementProperties.put("license", project.property("license") as String)
+        replacementProperties.put("group", project.group as String)
+        replacementProperties.put("minecraft_version_range", project.property("deps.minecraft_range") as String)
+        replacementProperties.put("big_shot_version", project.property("deps.big_shot") as String)
+        replacementProperties.put("yacl_version", project.property("deps.yacl") as String)
+        replacementProperties.put("sodium_version", project.property("deps.sodium") as String)
+        replacementProperties.put("java_version", "21")
+    }
+
+    mixin {
+        configs.register(project.property("id") as String)
+        addMixinsToModManifest = true
+    }
+
+    finalJarTask.configure {
+        archiveVersion.set("${rootProject.version}+${project.property("deps.minecraft")}-neoforge")
+    }
+
+    namedJarTask.configure {
+        archiveVersion.set("${rootProject.version}+${project.property("deps.minecraft")}-neoforge")
+    }
+
+    moddevgradle {
+        findProperty("deps.forge")?.let { forgeVersion = it as String }
+        findProperty("deps.neoform")?.let { neoFormVersion = it as String }
+        findProperty("deps.neoforge")?.let { neoForgeVersion = it as String }
+        findProperty("deps.mcp")?.let { mcpVersion = it as String }
+
+        defaultRuns()
+    }
+}
+
+val env = DotEnvBuilder.dotEnv {
+    addFileIfExists("$rootDir/.env")
+    addFileIfExists("$projectDir/.env")
+}
+
+tasks.compileJava.configure {
+    val javaCompat = when {
+        sc.current.parsed >= "1.21.11" -> "25"
+        sc.current.parsed >= "1.20.5" -> "21"
+        sc.current.parsed >= "1.18" -> "17"
+        sc.current.parsed >= "1.17" -> "16"
+        else -> "8"
+    }
+    sourceCompatibility = javaCompat
+    targetCompatibility = javaCompat
+}
+
+java {
+    val javaCompat = when {
+        sc.current.parsed >= "1.21.11" -> JavaVersion.VERSION_25
+        sc.current.parsed >= "1.20.5" -> JavaVersion.VERSION_21
+        sc.current.parsed >= "1.18" -> JavaVersion.VERSION_17
+        sc.current.parsed >= "1.17" -> JavaVersion.VERSION_16
+        else -> JavaVersion.VERSION_1_8
+    }
+    sourceCompatibility = javaCompat
+    targetCompatibility = javaCompat
+}
+
+tasks.processResources {
+    exclude("fabric.mod.json")
+}
+
+version = "${property("version")}+${property("deps.minecraft")}-neoforge"
+base.archivesName = property("id") as String
+
+repositories {
+    mavenLocal()
+    maven("https://api.modrinth.com/maven")
+    maven("https://maven.isxander.dev/releases")
+    maven("https://maven.ryanhcode.dev/releases")
+    maven("https://maven.fabricmc.net")
+    maven("https://maven.parchmentmc.org")
+
+    ivy {
+        url = uri("https://github.com/TheTypholorian/big_shot_lib/releases/download")
+        patternLayout {
+            artifact("[revision]/[artifact]-[revision](-[classifier]).[ext]")
+        }
+        metadataSources {
+            artifact()
+        }
+    }
+}
+
+dependencies {
+    //modstitchModImplementation("maven.modrinth:sodium:${property("deps.sodium")}")
+    modstitchModCompileOnly("net.typho:big_shot_lib:${property("deps.big_shot")}")
+    modstitchModCompileOnly("maven.modrinth:yacl:${property("deps.yacl")}")
+
+    modstitchModImplementation("maven.modrinth:combat-amenities:${project.property("deps.combat_amenities")}")
+    modstitchModImplementation("maven.modrinth:midnightlib:${project.property("deps.midnightlib")}")
+
+    findProperty("deps.sable_companion")?.let {
+        modstitchJiJ(modstitchModApi("dev.ryanhcode.sable-companion:sable-companion-common-${property("deps.minecraft")}:[${it},)")!!)
+    }
+}
+
+tasks {
+    jar {
+        exclude("**/*.accesswidener")
+    }
+}
+
+val additionalVersions: List<String> = (findProperty("publish.additionalVersions") as? String)
+    ?.split(",")
+    ?.map { it.trim() }
+    ?.filter { it.isNotEmpty() }
+    ?: emptyList()
+
+publishMods {
+    file = modstitch.finalJarTask.map { it.archiveFile.get() }
+    //additionalFiles.from(tasks.sourcesJar)
+
+    type = STABLE
+    displayName = "${property("name")} ${property("version")} for ${property("deps.minecraft") as String} Fabric"
+    version = "${property("version")}+${property("deps.minecraft") as String}-fabric"
+    changelog = ""
+    //changelog = provider { rootProject.file("CHANGELOG.md").readText() }
+    modLoaders.add("fabric")
+
+    findProperty("publish.modrinth")?.let {
+        modrinth {
+            projectId = it as String
+            accessToken = env["MODRINTH_TOKEN"]
+            minecraftVersions.add(property("deps.minecraft") as String)
+            minecraftVersions.addAll(additionalVersions)
+            requires("fabric-api", "big-shot-lib", "yacl")
+        }
+    }
+
+    findProperty("publish.curseforge")?.let {
+        curseforge {
+            projectId = it as String
+            accessToken = env["CURSEFORGE_TOKEN"]
+            minecraftVersions.add(property("deps.minecraft") as String)
+            minecraftVersions.addAll(additionalVersions)
+            requires("fabric-api", "big-shot-lib", "yacl")
+        }
+    }
+}

@@ -1,0 +1,1 @@
+Go to https://typho.net/dev-utils/templates/java-big-shot-lib.html for a generator

@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.hollowed.antique.mixin",
+  "refmap": "antique.refmap.json",
+  "compatibilityLevel": "JAVA_${java_version}",
+  "mixins": [],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "net.typho.big_shot_lib.api.NeoCommonInitializer": [
+    "net.hollowed.antique.Antiquities"
+  ],
+  "net.typho.big_shot_lib.api.client.NeoClientInitializer": [
+    "net.hollowed.antique.client.AntiquitiesClient"
+  ]
+}
