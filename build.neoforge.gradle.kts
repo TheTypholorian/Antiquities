@@ -1,6 +1,7 @@
 import io.github.klahap.dotenv.DotEnvBuilder
 
 plugins {
+    kotlin("jvm")
     id("dev.kikugie.fletching-table.neoforge") version "0.1.0-alpha.22"
 
     id("me.modmuss50.mod-publish-plugin") version "2.0.0-beta.1"

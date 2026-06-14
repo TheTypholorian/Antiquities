@@ -14,8 +14,11 @@
   },
   "icon": "icon.png",
   "entrypoints": {
-    "modmenu": [
-      "net.hollowed.antique.ModMenuCompat"
+    "main": [
+      "net.hollowed.antique.Antiquities"
+    ],
+    "client": [
+      "net.hollowed.antique.AntiquitiesClient"
     ]
   },
   "depends": {

@@ -1,4 +1,5 @@
 plugins {
+    kotlin("jvm") version "2.4.0" apply false
     id("dev.kikugie.stonecutter")
     id("net.fabricmc.fabric-loom") version "1.16-SNAPSHOT" apply false
     id("net.fabricmc.fabric-loom-remap") version "1.16-SNAPSHOT" apply false

@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.function.Predicate;
 
+// TODO switch to big shot lib initializer
 public class Antiquities implements ModInitializer {
 
 	public static final String MOD_ID = "antique";
