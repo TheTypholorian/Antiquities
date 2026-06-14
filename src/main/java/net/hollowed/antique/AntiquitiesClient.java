@@ -194,28 +194,31 @@ public class AntiquitiesClient implements ClientModInitializer {
 
                 list.add(1, line);
 
-                component.cloth().ifPresent(cloth -> {
-                    ClothUtil.getCloth(cloth).ifPresent(clothKey -> {
-                        String clothName = clothKey.identifier().toLanguageKey();
-                        list.add(2, Component.literal(" - ").append(Component.translatable("item." + clothName)).withColor(new Color(ClothUtil.getDynamicClothColor(cloth, context.registries()).orElse(0xFFFFFFFF)).brighter().getRGB()));
+                component.cloth().ifPresent(cloth -> ClothUtil.getCloth(cloth).ifPresent(clothKey -> {
+                    String clothName = clothKey.identifier().toLanguageKey();
+                    list.add(2, Component.literal(" - ").append(Component.translatable("item." + clothName)).withColor(new Color(ClothUtil.getDynamicClothColor(cloth, context.registries()).orElse(0xFFFFFFFF)).brighter().getRGB()));
 
-                        Optional.ofNullable(cloth.get(AntiqueDataComponentTypes.CLOTH_PATTERN_TYPE)).ifPresent(pattern -> {
-                            String patternName = pattern.identifier().toLanguageKey();
-                            Component text = Component.literal(" - ").append(Component.translatable("item." + patternName)).withColor(new Color(ClothUtil.getClothPatternColor(cloth).orElse(0xFFFFFFFF)).brighter().getRGB());
+                    Optional.ofNullable(cloth.get(AntiqueDataComponentTypes.CLOTH_PATTERN_TYPE)).ifPresent(pattern -> {
+                        String patternName = pattern.identifier().toLanguageKey();
+                        Component text = Component.literal(" - ").append(Component.translatable("item." + patternName)).withColor(new Color(ClothUtil.getClothPatternColor(cloth).orElse(0xFFFFFFFF)).brighter().getRGB());
 
-                            if (itemStack.getOrDefault(AntiqueDataComponentTypes.CLOTH_PATTERN_GLOWING, false)) {
-                                text = text.copy().append(Component.literal(" - ").withColor(0xff4adbb8)).append(Component.translatable("item.antique.glowing").withColor(0xFF4ADBB8));
-                            }
+                        if (cloth.getOrDefault(AntiqueDataComponentTypes.CLOTH_PATTERN_GLOWING, false)) {
+                            text = text.copy().append(Component.literal(" - ").withColor(0xff4adbb8)).append(Component.translatable("item.antique.glowing").withColor(0xFF4ADBB8));
+                        }
 
-                            list.add(3, text);
-                        });
+                        list.add(3, text);
                     });
-                });
+                }));
             }
 
             if (itemStack.is(AntiqueItems.CLOTH)) {
                 ClothUtil.getClothPattern(itemStack).ifPresent(pattern -> {
-                    list.add(2, Component.literal(" - ").append(Component.translatable(ClothPatternData.getTranslationKey(pattern))).withColor(new Color(ClothUtil.getClothPatternColor(itemStack).orElse(0xFFFFFFFF)).brighter().getRGB()));
+                    Component text = Component.literal(" - ").append(Component.translatable(ClothPatternData.getTranslationKey(pattern))).withColor(new Color(ClothUtil.getClothPatternColor(itemStack).orElse(0xFFFFFFFF)).brighter().getRGB());
+                    if (itemStack.getOrDefault(AntiqueDataComponentTypes.CLOTH_PATTERN_GLOWING, false)) {
+                        text = text.copy().append(Component.literal(" - ").withColor(0xff4adbb8)).append(Component.translatable("item.antique.glowing").withColor(0xFF4ADBB8));
+                    }
+
+                    list.add(2, text);
                 });
             }
 

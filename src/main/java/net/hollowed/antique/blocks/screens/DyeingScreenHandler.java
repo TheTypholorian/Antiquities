@@ -178,7 +178,7 @@ public class DyeingScreenHandler extends AbstractContainerMenu {
 				MyriadToolComponent component = result.get(AntiqueDataComponentTypes.MYRIAD_TOOL);
 
 				if (component != null) {
-					result.set(AntiqueDataComponentTypes.MYRIAD_TOOL, component.withCloth(cloth -> ClothUtil.setClothPatternColor(cloth, Optional.of(dyeColor))));
+					result.set(AntiqueDataComponentTypes.MYRIAD_TOOL, component.withCloth(cloth -> ClothUtil.setClothPatternColor(cloth, Optional.of(dyeColor.rgb()))));
 				} else {
 					result.set(DataComponents.DYED_COLOR, dyeColor);
 				}
