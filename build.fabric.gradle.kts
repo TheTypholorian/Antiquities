@@ -1,5 +1,4 @@
 import io.github.klahap.dotenv.DotEnvBuilder
-import org.gradle.kotlin.dsl.modImplementation
 import org.gradle.kotlin.dsl.modstitchModImplementation
 
 plugins {
@@ -66,8 +65,6 @@ modstitch {
         replacementProperties.put("minecraft_version_range", project.property("deps.minecraft_range") as String)
         replacementProperties.put("fabric_api_version", project.property("deps.fabric_api") as String)
         replacementProperties.put("big_shot_version", project.property("deps.big_shot") as String)
-        replacementProperties.put("yacl_version", project.property("deps.yacl") as String)
-        replacementProperties.put("sodium_version", project.property("deps.sodium") as String)
         replacementProperties.put("java_version", "21")
     }
 
@@ -152,9 +149,7 @@ repositories {
 dependencies {
     modstitchModImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
 
-    //modstitchModCompileOnly("maven.modrinth:sodium:${property("deps.sodium")}")
     modstitchModCompileOnly("net.typho:big_shot_lib:${property("deps.big_shot")}")
-    modstitchModCompileOnly("maven.modrinth:yacl:${property("deps.yacl")}")
     modstitchModCompileOnly("maven.modrinth:modmenu:${property("deps.modmenu")}")
 
     modstitchModImplementation("maven.modrinth:combat-amenities:${project.property("deps.combat_amenities")}")

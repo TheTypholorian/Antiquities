@@ -63,8 +63,6 @@ modstitch {
         replacementProperties.put("group", project.group as String)
         replacementProperties.put("minecraft_version_range", project.property("deps.minecraft_range") as String)
         replacementProperties.put("big_shot_version", project.property("deps.big_shot") as String)
-        replacementProperties.put("yacl_version", project.property("deps.yacl") as String)
-        replacementProperties.put("sodium_version", project.property("deps.sodium") as String)
         replacementProperties.put("java_version", "21")
     }
 
@@ -147,9 +145,7 @@ repositories {
 }
 
 dependencies {
-    //modstitchModImplementation("maven.modrinth:sodium:${property("deps.sodium")}")
     modstitchModCompileOnly("net.typho:big_shot_lib:${property("deps.big_shot")}")
-    modstitchModCompileOnly("maven.modrinth:yacl:${property("deps.yacl")}")
 
     modstitchModImplementation("maven.modrinth:combat-amenities:${project.property("deps.combat_amenities")}")
     modstitchModImplementation("maven.modrinth:midnightlib:${project.property("deps.midnightlib")}")
